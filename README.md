@@ -12,21 +12,21 @@ job title - "Video CRUDs with Firestore Integration and AR-based Filtering with 
 
 ## Assignment Details
 
-Firebase Authentication used to authenticate user. email/password feature enabled .
+**Firebase Authentication used to authenticate user. email/password feature enabled**
 
-Firebase Storage - Firebase Storage used to store video and video thumbnail 
+**Firebase Storage** - Firebase Storage used to store video and video thumbnail 
 
-FireStore - FireStore is used as NoSQL database
+**FireStore** - FireStore is used as NoSQL database
 
-Video compression - `video_compress` plugin is used to compress uploaded video. Here I used `VideoQuality.LowQuality` as quality for maximum compression.
+**Video compression** - `video_compress` plugin is used to compress uploaded video. Here I used `VideoQuality.LowQuality` as quality for maximum compression.
 
-Augmented Reality (AR) filtering - I used [DeepAR](https://www.deepar.ai/) for Augmented Reality filtering.
+**Augmented Reality (AR) filtering** - I used [DeepAR](https://www.deepar.ai/) for Augmented Reality filtering.
 
-Video thumbnail generation - Video thumbnail is generated from uploaded video using `video_compress` plugin
+**Video thumbnail generation** - Video thumbnail is generated from uploaded video using `video_compress` plugin
 
-Error Handling - Try,Catch block used for Error Handling
+**Error Handling** - Try,Catch block used for Error Handling
 
-Delete video - right / left swipe to delete video from homepage list view.
+**Delete video** - right / left swipe to delete video from homepage list view.
 
 ## Getting Started
 
