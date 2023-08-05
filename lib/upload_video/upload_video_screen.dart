@@ -24,9 +24,10 @@ class UploadVideoScreen extends StatefulWidget {
 class _UploadVideoScreenState extends State<UploadVideoScreen> {
   VideoPlayerController? playerController;
   TextEditingController titleTextEditingController = TextEditingController();
-  TextEditingController descriptionTextEditingController =
-      TextEditingController();
+  TextEditingController descriptionTextEditingController = TextEditingController();
   TextEditingController dateTextEditingController = TextEditingController();
+
+  GlobalKey<FormState> uploadFormKey = GlobalKey<FormState>();
 
   UploadController uploadVideoController = Get.put(UploadController());
 
@@ -55,7 +56,7 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
   @override
   Widget build(BuildContext context) {
     final now = new DateTime.now();
-    String formatter = DateFormat('dd/MM/yyyy').format(now); // 28/03/2020
+    String formatter = DateFormat('dd/MM/yyyy').format(now);
 
     dateTextEditingController.text = formatter;
     return Scaffold(
@@ -65,152 +66,152 @@ class _UploadVideoScreenState extends State<UploadVideoScreen> {
           color: Colors.grey,
           opacity: 0.5,
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                // display video player
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 2.0,
-                  child: SizedBox(
+            child: Form(
+              key: uploadFormKey,
+              child: Column(
+                children: [
+                  // display video player
+                  SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 2.0,
-                    child: playerController!.value.isInitialized
-                        ? Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  VideoPlayer(playerController!),
-                                  VideoProgressIndicator(playerController!,
-                                      allowScrubbing: true),
-                                ],
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    playerController!.value.isPlaying
-                                        ? playerController!.pause()
-                                        : playerController!.play();
-                                  });
-                                },
-                                child: playerController!.value.isPlaying
-                                    ? const Icon(
-                                        Icons.pause,
-                                        color: Colors.white,
-                                        size: 60.0,
-                                      )
-                                    : const Icon(
-                                        Icons.play_arrow,
-                                        color: Colors.white,
-                                        size: 60.0,
-                                      ),
-                              )
-                            ],
-                          )
-                        : const SizedBox(
-                            height: 40.0,
-                            width: 40.0,
-                            child: Center(child: CircularProgressIndicator()),
-                          ),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height / 2.0,
+                      child: playerController!.value.isInitialized
+                          ? Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Stack(
+                                  alignment: Alignment.bottomCenter,
+                                  children: [
+                                    VideoPlayer(playerController!),
+                                    VideoProgressIndicator(playerController!,
+                                        allowScrubbing: true),
+                                  ],
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      playerController!.value.isPlaying
+                                          ? playerController!.pause()
+                                          : playerController!.play();
+                                    });
+                                  },
+                                  child: playerController!.value.isPlaying
+                                      ? const Icon(
+                                          Icons.pause,
+                                          color: Colors.white,
+                                          size: 60.0,
+                                        )
+                                      : const Icon(
+                                          Icons.play_arrow,
+                                          color: Colors.white,
+                                          size: 60.0,
+                                        ),
+                                )
+                              ],
+                            )
+                          : const SizedBox(
+                              height: 40.0,
+                              width: 40.0,
+                              child: Center(child: CircularProgressIndicator()),
+                            ),
+                    ),
                   ),
-                ),
 
-                const SizedBox(
-                  height: 30.0,
-                ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
 
-                Column(
-                  children: [
-                    // title input field
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
-                      child: InputTextWidget(
-                          textEditingController: titleTextEditingController,
-                          labelString: 'title',
-                          iconData: Icons.title,
-                          isObscure: false),
-                    ),
-
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-
-                    // description input field
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
-                      child: InputTextWidget(
-                          textEditingController:
-                              descriptionTextEditingController,
-                          labelString: 'description',
-                          iconData: Icons.description,
-                          isObscure: false),
-                    ),
-
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-
-                    // upload date field
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
-                      child: InputTextWidget(
-                        textEditingController: dateTextEditingController,
-                        labelString: 'upload date',
-                        iconData: Icons.calendar_month,
-                        isObscure: false,
-                        isEnable: false,
+                  Column(
+                    children: [
+                      // title input field
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        child: InputTextWidget(
+                            textEditingController: titleTextEditingController,
+                            labelString: 'title',
+                            iconData: Icons.title,
+                            isObscure: false),
                       ),
-                    ),
 
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-
-                    // upload now button
-                    Container(
-                      width: MediaQuery.of(context).size.width - 38,
-                      height: 54,
-                      decoration: const BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: InkWell(
-                        onTap: () {
-                          //todo - form validation change, use form
-                          if (titleTextEditingController.text.isNotEmpty &&
-                              descriptionTextEditingController
-                                  .text.isNotEmpty &&
-                              dateTextEditingController.text.isNotEmpty) {
-                            // hide keyboard
-                            hideKeyboard();
-                            // upload video
-                            uploadVideoController.saveVideoInfo(
-                                titleTextEditingController.text,
-                                descriptionTextEditingController.text,
-                                dateTextEditingController.text,
-                                widget.videoPath,
-                                context);
-                          }
-                        },
-                        child: const Center(
-                            child: Text(
-                          'Upload Now',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500),
-                        )),
+                      const SizedBox(
+                        height: 10.0,
                       ),
-                    ),
-                  ],
-                ),
 
-                // upload now btn clicked
-                // circular progress bar
-              ],
+                      // description input field
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        child: InputTextWidget(
+                            textEditingController:
+                                descriptionTextEditingController,
+                            labelString: 'description',
+                            iconData: Icons.description,
+                            isObscure: false),
+                      ),
+
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+
+                      // upload date field
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        child: InputTextWidget(
+                          textEditingController: dateTextEditingController,
+                          labelString: 'upload date',
+                          iconData: Icons.calendar_month,
+                          isObscure: false,
+                          isEnable: false,
+                        ),
+                      ),
+
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+
+                      // upload now button
+                      Container(
+                        width: MediaQuery.of(context).size.width - 38,
+                        height: 54,
+                        decoration: const BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                        child: InkWell(
+                          onTap: () {
+                            final form = uploadFormKey.currentState;
+                            if(form!.validate()) {
+                              // hide keyboard
+                              hideKeyboard();
+                              // upload video
+                              uploadVideoController.saveVideoInfo(
+                                  titleTextEditingController.text,
+                                  descriptionTextEditingController.text,
+                                  dateTextEditingController.text,
+                                  widget.videoPath,
+                                  context);
+                            }
+                          },
+                          child: const Center(
+                              child: Text(
+                            'Upload Now',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          )),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  // upload now btn clicked
+                  // circular progress bar
+                ],
+              ),
             ),
           ),
         ),
