@@ -40,8 +40,8 @@ This is assignment from TalentPro to **Humayun Kabir**
 
 **Delete video** - right / left swipe to delete video from homepage list view.
 
-**compileSdkVersion should be 33 or more.**
-**minSdkVersion should be 23 or more.**
+==compileSdkVersion should be 33 or more.==
+==minSdkVersion should be 23 or more.==
 
 ## Getting Started
 
