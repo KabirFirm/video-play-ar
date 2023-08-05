@@ -64,6 +64,7 @@ class _ARFilteringState extends State<ARFiltering> {
               child: DeepArPreview(
                 _controller,
                 onViewCreated: () {
+                  print('coming here');
                   // set any initial effect, filter etc
                   _controller.switchEffect(
                       _assetEffectsPath + 'viking_helmet.deepar');
@@ -118,8 +119,10 @@ class _ARFilteringState extends State<ARFiltering> {
             onPressed: () async {
               _isFilter = !_isFilter;
               if (_isFilter) {
+                print('if');
                 _controller.switchFilter(_filterList[_filterIndex]);
               } else {
+                print('else');
                 _controller.switchFilter("null");
               }
               setState(() {});
