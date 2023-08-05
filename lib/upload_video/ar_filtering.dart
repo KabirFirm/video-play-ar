@@ -250,7 +250,6 @@ class _ARFilteringState extends State<ARFiltering> {
   void _initEffects() {
     // Either get all effects
     _getEffectsFromAssets(context).then((values) {
-      print('length - ${values.length}');
       _effectsList.clear();
       _effectsList.addAll(values);
 
