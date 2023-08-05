@@ -19,8 +19,8 @@ This is assignment from TalentPro to **Humayun Kabir**
 ## Video CRUDs with Firestore Integration and AR-based Filtering with Maximum File Size Compression
 
 ## Instructions to run this project
-1. Git clone `git@github.com:KabirFirm/video-play-ar.git`
-2. flutter pub get [run this command from terminal]
+1. `git clone git@github.com:KabirFirm/video-play-ar.git`
+2. `flutter pub get` [run this command from terminal]
 
 ## Assignment Details
 
@@ -39,6 +39,9 @@ This is assignment from TalentPro to **Humayun Kabir**
 **Error Handling** - Try,Catch block used for Error Handling
 
 **Delete video** - right / left swipe to delete video from homepage list view.
+
+**compileSdkVersion should be 33 or more.**
+**minSdkVersion should be 23 or more.**
 
 ## Getting Started
 
