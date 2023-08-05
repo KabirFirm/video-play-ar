@@ -250,6 +250,7 @@ class _ARFilteringState extends State<ARFiltering> {
   void _initEffects() {
     // Either get all effects
     _getEffectsFromAssets(context).then((values) {
+      print('length - ${values.length}');
       _effectsList.clear();
       _effectsList.addAll(values);
 
@@ -278,8 +279,7 @@ class _ARFilteringState extends State<ARFiltering> {
   /// Get all deepar effects from assets
   ///
   Future<List<String>> _getEffectsFromAssets(BuildContext context) async {
-    final manifestContent =
-    await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
+    final manifestContent = await DefaultAssetBundle.of(context).loadString('AssetManifest.json');
     final Map<String, dynamic> manifestMap = json.decode(manifestContent);
     final filePaths = manifestMap.keys
         .where((path) => path.startsWith(_assetEffectsPath))
