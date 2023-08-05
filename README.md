@@ -16,7 +16,7 @@ This is assignment from TalentPro to **Humayun Kabir**
         </td>
 </table>
 
-## job title - "Video CRUDs with Firestore Integration and AR-based Filtering with Maximum File Size Compression"
+## Video CRUDs with Firestore Integration and AR-based Filtering with Maximum File Size Compression
 
 ## Instructions to run this project
 1. Git clone `git@github.com:KabirFirm/video-play-ar.git`
