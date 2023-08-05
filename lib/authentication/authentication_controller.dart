@@ -13,9 +13,12 @@ class AuthenticationController extends GetxController
 
   static AuthenticationController instanceAuth = Get.find();
   late Rx<User?> _currentUser;
+  final isLoading = false.obs;
 
   void createAccount(String userName, String email, String password) async
   {
+    // start loading
+    isLoading(true);
     try {
       // create user in the firebase authentication
       UserCredential credential = await FirebaseAuth.instance
@@ -34,18 +37,22 @@ class AuthenticationController extends GetxController
       await FirebaseFirestore.instance.collection('users').doc(credential.user!.uid).set(user.toJson());
 
       Get.snackbar('Success', 'Signup successful');
-      showProgressBar = false;
+      // stop loading
+      isLoading(false);
       // GetX state management will redirect user to home Screen automatically
 
     }catch(error) {
       Get.snackbar('Error', 'Error on signup');
-      showProgressBar = false;
-      Get.to(LoginScreen());
+      // stop loading
+      isLoading(false);
+
     }
   }
 
   void loginUser(String email, String password) async
   {
+    // start loading
+    isLoading(true);
     try {
       // user in the firebase authentication
       await FirebaseAuth.instance
@@ -53,16 +60,16 @@ class AuthenticationController extends GetxController
           email: email,
           password: password
       );
-
+      // stop loading
+      isLoading(false);
       Get.snackbar('Success', 'Login successful');
-      showProgressBar = false;
 
       // GetX state management will redirect to HomeScreen automatically
 
     }catch(error) {
+      // stop loading
+      isLoading(false);
       Get.snackbar('Error', 'Error on login');
-      showProgressBar = false;
-      Get.to(SignupScreen());
     }
   }
 

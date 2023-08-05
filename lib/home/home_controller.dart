@@ -16,6 +16,7 @@ class HomeController extends GetxController {
   final Rx<List<Video>> _videoList = Rx<List<Video>>([]);
 
   List<Video> get videoList => _videoList.value;
+  final isLoading = false.obs;
 
   @override
   void onInit() {
@@ -137,6 +138,8 @@ class HomeController extends GetxController {
 
   updateVideoInfo(String newTitle, String newDescription, Video videoData, BuildContext context) async
   {
+    // start loading
+    isLoading(true);
     try {
       // get current user information from FireStore
       DocumentSnapshot userDocumentSnapshot = await FirebaseFirestore.instance
@@ -163,11 +166,13 @@ class HomeController extends GetxController {
       await FirebaseFirestore.instance.collection("videos").doc(videoID).update(videoObject.toJson());
 
       Get.offAll(HomeScreen());
-      showProgressBar = false;
+      // stop loading
+      isLoading(false);
       Get.snackbar("Success", "New video upload success");
 
     }catch(error) {
-      showProgressBar = false;
+      // stop loading
+      isLoading(false);
       Get.snackbar('Error', 'video update failed');
       print('error - $error');
     }
@@ -175,16 +180,19 @@ class HomeController extends GetxController {
 
   deleteVideoInfo(Video videoData, BuildContext context) async
   {
+    // start loading
+    isLoading(true);
     try {
-
       await FirebaseFirestore.instance.collection("videos").doc(videoData.videoID).delete();
 
       Get.offAll(HomeScreen());
-      showProgressBar = false;
+      // stop loading
+      isLoading(false);
       Get.snackbar("Success", "Video delete success");
 
     }catch(error) {
-      showProgressBar = false;
+      // stop loading
+      isLoading(false);
       Get.snackbar('Error', 'Video delete failed');
     }
   }

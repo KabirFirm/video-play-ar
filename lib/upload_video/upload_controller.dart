@@ -13,6 +13,7 @@ class UploadController extends GetxController
 {
 
   static UploadController instanceUpload = Get.find();
+  final isLoading = false.obs;
 
   compressVideoFile(String videoFilePath) async
   {
@@ -58,6 +59,8 @@ class UploadController extends GetxController
 
   saveVideoInfo(String title, String description, String uploadDate, String videoFilePath, BuildContext context) async
   {
+    // start loading
+    isLoading(true);
     try {
       // get current user information from FireStore
       DocumentSnapshot userDocumentSnapshot = await FirebaseFirestore.instance
@@ -87,13 +90,16 @@ class UploadController extends GetxController
       );
       
       await FirebaseFirestore.instance.collection("videos").doc(videoID).set(videoObject.toJson());
+      // stop loading
+      isLoading(false);
 
       Get.offAll(HomeScreen());
-      showProgressBar = false;
+      //showProgressBar = false;
       Get.snackbar("Success", "New video upload success");
 
     }catch(error) {
-      showProgressBar = false;
+      // stop loading
+      isLoading(false);
       Get.snackbar('Error', 'video upload failed');
     }
   }
