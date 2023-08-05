@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "353899434547",
+    "project_id": "video-player-4107a",
+    "storage_bucket": "video-player-4107a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353899434547:android:994a54ba04665bf470c946",
+        "android_client_info": {
+          "package_name": "com.humayun.video_play"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353899434547-he6sefglu4jmnp1ctoagv17jcgc856s9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0LDdejBmrAQEvyJiHZIfpTC5FyS-kryQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353899434547-he6sefglu4jmnp1ctoagv17jcgc856s9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

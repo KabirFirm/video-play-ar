@@ -1,0 +1,3 @@
+bool showProgressBar = false;
+const androidDeepARKey = "cbee9f3ae982097acffa0c3c4065a9d024e358b0799420fd0bebc2f922db33cd80732937ebbcc275";
+const iOSDeepARKey = "f3a9feea1beddd77062e5225a27d858059f7620641d3412df98416f4eb0f6dd4626b056796a8f8c3";
