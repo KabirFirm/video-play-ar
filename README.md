@@ -2,9 +2,21 @@
 
 A new Flutter project for video upload and play. Use Firebase Authentication, Firebase storage and firestore.
 
-This is assignment from TalentPro to Humayun Kabir..
+This is assignment from TalentPro to **Humayun Kabir**
 
-job title - "Video CRUDs with Firestore Integration and AR-based Filtering with Maximum File Size Compression"
+<table>
+    <tr>
+        <td align="center"><b>Humayun Kabir</b><br>(KabirFirm)</td>
+    </tr>
+    <tr>
+        <td align="center">
+            <a href="https://github.com/KabirFirm">
+                <image src="https://avatars.githubusercontent.com/u/4075816?s=400&u=878be022ef2a075c9da17604ac2cf4b70e55b9d4&v=4" width=100>
+            </a>
+        </td>
+</table>
+
+## job title - "Video CRUDs with Firestore Integration and AR-based Filtering with Maximum File Size Compression"
 
 ## Instructions to run this project
 1. Git clone `git@github.com:KabirFirm/video-play-ar.git`
@@ -41,19 +53,3 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-
-### Humayun Kabir:
-
-<table>
-    <tr>
-        <td align="center"><b>Humayun Kabir</b><br>(KabirFirm)</td>
-    </tr>
-    <tr>
-        <td align="center">
-            <a href="https://github.com/KabirFirm">
-                <image src="https://avatars.githubusercontent.com/u/4075816?s=400&u=878be022ef2a075c9da17604ac2cf4b70e55b9d4&v=4" width=100>
-            </a>
-        </td>
-        
-    </tr>
-</table>
