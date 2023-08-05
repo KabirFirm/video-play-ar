@@ -7,8 +7,8 @@ This is assignment from TalentPro to Humayun Kabir..
 job title - "Video CRUDs with Firestore Integration and AR-based Filtering with Maximum File Size Compression"
 
 ## Instructions to run this project
-1. Git clone git@github.com:KabirFirm/video-play-ar.git
-2. flutter pub get
+1. Git clone `git@github.com:KabirFirm/video-play-ar.git`
+2. flutter pub get [run this command from terminal]
 
 ## Assignment Details
 
