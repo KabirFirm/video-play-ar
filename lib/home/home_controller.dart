@@ -19,7 +19,7 @@ class HomeController extends GetxController {
   final isLoading = false.obs;
 
   @override
-  void onInit() {
+  void onInit() async{
     // TODO: implement onInit
     super.onInit();
 
@@ -27,9 +27,13 @@ class HomeController extends GetxController {
         FirebaseFirestore.instance.collection('videos').snapshots().map((QuerySnapshot query) {
           List<Video> retVal = [];
           for (var element in query.docs) {
-            retVal.add(
-              Video.fromSnap(element),
-            );
+            // get only those document which are uploaded by this user
+            // if you want to see all users video, just remove if statement
+            if(FirebaseAuth.instance.currentUser!.uid != null && FirebaseAuth.instance.currentUser!.uid == element['userID']) {
+              retVal.add(
+                Video.fromSnap(element),
+              );
+            }
           }
           return retVal;
         }));
